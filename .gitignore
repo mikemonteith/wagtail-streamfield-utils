@@ -1,0 +1,5 @@
+.pytest_cache/
+venv
+testapp/db.sqlite3
+wagtail_streamfield_migrate.egg-info/
+pip-wheel-metadata
