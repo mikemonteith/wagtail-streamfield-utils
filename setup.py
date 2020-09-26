@@ -1,4 +1,4 @@
-from setuptools import setup, find_packages
+from setuptools import find_packages, setup
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
@@ -6,15 +6,14 @@ with open("README.md", "r") as fh:
 INSTALL_REQUIRES = ["Wagtail>=2.0"]
 
 TESTING_REQUIRES = [
-    "black==19.3b0",
     "Django>=2.2,<2.3",
-    "flake8==3.7.8",
-    "flake8-black==0.1.1",
     "pytest==5.2.1",
     "pytest-django==3.5.1",
     "pytest-pythonpath==0.7.3",
     "wagtail>=2.6,<2.7",
 ]
+
+LINTING_REQUIRES = ["black==19.3b0", "flake8==3.7.8", "flake8-black==0.1.1", "isort==5.5.3"]
 
 setup(
     name="wagtail-streamfield-migrate",
@@ -28,5 +27,5 @@ setup(
     install_requires=INSTALL_REQUIRES,
     packages=find_packages(),
     include_package_data=True,
-    extras_require={"testing": TESTING_REQUIRES},
+    extras_require={"testing": TESTING_REQUIRES, "linting": LINTING_REQUIRES},
 )
