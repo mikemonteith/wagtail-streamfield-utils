@@ -1,6 +1,7 @@
 import pytest
-from streamfieldutils.iterators import flatten_streamfield
 from wagtail.core.blocks import CharBlock, IntegerBlock, RichTextBlock
+
+from streamfieldutils.iterators import flatten_streamfield
 
 # Define a mark for all tests in this file
 pytestmark = pytest.mark.django_db
