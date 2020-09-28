@@ -4,3 +4,4 @@ venv
 testapp/db.sqlite3
 wagtail_streamfield_migrate.egg-info/
 pip-wheel-metadata
+db.sqlite3
