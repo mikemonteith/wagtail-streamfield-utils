@@ -25,7 +25,9 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 
 INSTALLED_APPS = [
     "tests.testapp",
+    "streamfieldutils.indexer",
     "wagtail.contrib.forms",
+    "wagtail.contrib.modeladmin",
     "wagtail.contrib.redirects",
     "wagtail.embeds",
     "wagtail.sites",
