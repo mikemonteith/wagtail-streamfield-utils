@@ -4,7 +4,7 @@ import pytest
 from wagtail.core.blocks.stream_block import StreamValue
 
 from streamfieldutils.indexer import indexer
-from streamfieldutils.indexer.models import IndexEntry, BlockTypes
+from streamfieldutils.indexer.models import BlockTypes, IndexEntry
 
 from .testapp.models import HomePage
 
