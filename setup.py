@@ -10,7 +10,7 @@ TESTING_REQUIRES = [
     "pytest==5.2.1",
     "pytest-django==3.5.1",
     "pytest-pythonpath==0.7.3",
-    "wagtail>=2.6,<2.7",
+    "wagtail>=2.10,<2.11",
 ]
 
 LINTING_REQUIRES = ["black==19.3b0", "flake8==3.7.8", "flake8-black==0.1.1", "isort==5.5.3"]
