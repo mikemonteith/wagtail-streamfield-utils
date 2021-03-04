@@ -9,7 +9,7 @@ pytestmark = pytest.mark.django_db
 
 def test_iterate_count(home_page):
     count = sum(1 for _ in flatten_streamfield(home_page.body))
-    assert count == 11
+    assert count == 12
 
 
 def test_iterate_values(home_page):

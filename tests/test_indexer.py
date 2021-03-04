@@ -2,6 +2,7 @@ import json
 
 import pytest
 from wagtail.core.blocks.stream_block import StreamValue
+from wagtail.images import get_image_model
 
 from streamfieldutils.indexer import indexer
 from streamfieldutils.indexer.models import BlockTypes, IndexEntry
@@ -124,6 +125,7 @@ def test_index_block_value(home_page):
     assert IndexEntry.objects.filter(block_name="number")[0].block_value == "123"
     assert IndexEntry.objects.filter(block_name="author")[0].block_value == ""
     assert IndexEntry.objects.filter(block_name="body")[0].block_value == ""
+    assert IndexEntry.objects.filter(block_name="image")[0].block_value == "1"
 
 
 def test_index_block_path(home_page):
@@ -133,6 +135,19 @@ def test_index_block_path(home_page):
     assert IndexEntry.objects.all()[10].block_path == "5/author/body/1/paragraph"
 
 
-def test_index_block_(home_page):
+def test_index_block_field_name(home_page):
     indexer.index_page(home_page)
     assert IndexEntry.objects.all()[0].field_name == "body"
+
+
+def test_index_image_bound_block(home_page):
+    """
+    For some complex block types like images or other choosers, the block value is a string
+    but the BoundBlock value is an object (in this case, an Image object).
+    """
+    indexer.index_page(home_page)
+    index_entry = IndexEntry.objects.filter(block_name="image")[0]
+    bound_block = index_entry.get_bound_block()
+
+    assert isinstance(index_entry.block_value, str)
+    assert isinstance(bound_block.value, get_image_model())

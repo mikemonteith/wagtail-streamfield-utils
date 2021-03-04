@@ -46,7 +46,7 @@ def index_field(field, page):
             block_value = ""
             block_type = BlockTypes.STREAM
         else:
-            block_value = str(block.value)
+            block_value = block.block.get_prep_value(block.value)
             block_type = BlockTypes.OTHER
 
         block_path = "/".join(path)
