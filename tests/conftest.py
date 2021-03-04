@@ -18,9 +18,9 @@ def root_page():
 
 @pytest.fixture
 def image():
-    image = Image.new('RGBA', size=(50,50), color=(0,70,177))
+    image = Image.new("RGBA", size=(50, 50), color=(0, 70, 177))
     image_file = io.BytesIO()
-    image.save(image_file, 'png') # or whatever format you prefer
+    image.save(image_file, "png")  # or whatever format you prefer
     file = ImageFile(image_file, name="testimage.png")
     wagtail_image = get_image_model()(file=file, title="My Test Image")
     wagtail_image.save()
