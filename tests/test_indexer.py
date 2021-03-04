@@ -151,3 +151,24 @@ def test_index_image_bound_block(home_page):
 
     assert isinstance(index_entry.block_value, str)
     assert isinstance(bound_block.value, get_image_model())
+
+
+def test_none_value(root_page):
+    """
+    Sometimes get_prep_value can return None. We need to make sure we're handling this case
+    """
+    body_data = [
+        {"type": "image", "value": None},
+    ]
+    stream_block = HomePage.body.field.stream_block
+    home_page = HomePage(
+        body=StreamValue(stream_block, [], is_lazy=True, raw_text=json.dumps(body_data)),
+        title="Home Page",
+        slug="homepage",
+    )
+    root_page.add_child(instance=home_page)
+    home_page.refresh_from_db()
+
+    indexer.index_page(home_page)
+
+    assert IndexEntry.objects.count() == 1
