@@ -170,3 +170,11 @@ def test_none_value(root_page):
     indexer.index_page(home_page)
 
     assert IndexEntry.objects.count() == 1
+
+
+def test_draft_pages(home_page):
+    home_page.unpublish()
+
+    indexer.index_all()
+
+    assert IndexEntry.objects.count() == 0

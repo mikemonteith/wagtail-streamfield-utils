@@ -12,7 +12,7 @@ def index_all(page_query=None):
     """
 
     if page_query is None:
-        page_query = Page.objects.all()
+        page_query = Page.objects.live().all()
 
     for page in page_query.specific():
         index_page(page)
