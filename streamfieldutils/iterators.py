@@ -17,7 +17,7 @@ def flatten_block(block, path=None):
         for i, item in enumerate(block.value):
             sub_block = block.block.child_block
             bound_block = blocks.BoundBlock(sub_block, item)
-            yield (bound_block, path + [str(i)])
+            yield from flatten_block(bound_block, path=path + [str(i)])
 
 
 def flatten_streamfield(streamvalue):

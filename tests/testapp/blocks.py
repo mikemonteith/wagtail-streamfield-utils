@@ -20,3 +20,4 @@ class BodyBlock(blocks.StreamBlock):
     paragraph = blocks.RichTextBlock()
     image = ImageChooserBlock()
     author = AuthorBlock()
+    authors = blocks.ListBlock(AuthorBlock())

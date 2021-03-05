@@ -9,7 +9,7 @@ pytestmark = pytest.mark.django_db
 
 def test_iterate_count(home_page):
     count = sum(1 for _ in flatten_streamfield(home_page.body))
-    assert count == 16
+    assert count == 22
 
 
 def test_iterate_values(home_page):
@@ -34,3 +34,5 @@ def test_iterate_paths(home_page):
     assert paths[9] == "5/author/body/0/heading"
     assert paths[12] == "7/numbers"
     assert paths[14] == "7/numbers/1"
+    assert paths[18] == "8/authors/0/name"
+    assert paths[21] == "8/authors/0/body/0/heading"
