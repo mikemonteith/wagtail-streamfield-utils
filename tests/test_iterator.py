@@ -9,7 +9,7 @@ pytestmark = pytest.mark.django_db
 
 def test_iterate_count(home_page):
     count = sum(1 for _ in flatten_streamfield(home_page.body))
-    assert count == 12
+    assert count == 16
 
 
 def test_iterate_values(home_page):
@@ -17,6 +17,7 @@ def test_iterate_values(home_page):
     assert values[0] == "This is a test homepage"
     assert values[6] == "Aneurin Bevan"
     assert values[9] == "Birth"
+    assert values[13] == 1
 
 
 def test_iterate_blocks(home_page):
@@ -31,3 +32,5 @@ def test_iterate_paths(home_page):
     assert paths[0] == "0/heading"
     assert paths[6] == "5/author/name"
     assert paths[9] == "5/author/body/0/heading"
+    assert paths[12] == "7/numbers"
+    assert paths[14] == "7/numbers/1"

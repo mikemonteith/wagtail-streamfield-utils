@@ -140,6 +140,13 @@ def test_index_block_field_name(home_page):
     assert IndexEntry.objects.all()[0].field_name == "body"
 
 
+def test_list_block(home_page):
+    indexer.index_page(home_page)
+    assert IndexEntry.objects.filter(block_name="numbers").count() == 1
+    assert IndexEntry.objects.filter(block_name="numbers:item").count() == 3
+    assert IndexEntry.objects.filter(block_name="numbers:item")[0].block_value == "1"
+
+
 def test_index_image_bound_block(home_page):
     """
     For some complex block types like images or other choosers, the block value is a string

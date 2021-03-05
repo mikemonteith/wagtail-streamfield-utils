@@ -5,6 +5,7 @@ class BlockTypes:
     OTHER = 0
     STRUCT = 1
     STREAM = 2
+    LIST = 3
 
 
 class IndexEntry(models.Model):

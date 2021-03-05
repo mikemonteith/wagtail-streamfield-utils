@@ -13,6 +13,11 @@ def flatten_block(block, path=None):
     if isinstance(block.block, blocks.StreamBlock):
         for i, sub_block in enumerate(block.value):
             yield from flatten_block(sub_block, path=path + [str(i), sub_block.block.name])
+    if isinstance(block.block, blocks.ListBlock):
+        for i, item in enumerate(block.value):
+            sub_block = block.block.child_block
+            bound_block = blocks.BoundBlock(sub_block, item)
+            yield (bound_block, path + [str(i)])
 
 
 def flatten_streamfield(streamvalue):

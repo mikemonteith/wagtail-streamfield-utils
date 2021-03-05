@@ -16,6 +16,7 @@ class BodyBlock(blocks.StreamBlock):
     description = blocks.TextBlock()
     email = blocks.EmailBlock()
     number = blocks.IntegerBlock()
+    numbers = blocks.ListBlock(blocks.IntegerBlock())
     paragraph = blocks.RichTextBlock()
     image = ImageChooserBlock()
     author = AuthorBlock()

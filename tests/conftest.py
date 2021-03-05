@@ -50,6 +50,7 @@ def home_page(root_page, image):
             },
         },
         {"type": "image", "value": image.id},
+        {"type": "numbers", "value": [1, 2, 3]},
     ]
     stream_block = HomePage.body.field.stream_block
     home_page = HomePage(

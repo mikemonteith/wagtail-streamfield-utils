@@ -45,11 +45,21 @@ def index_field(field, page):
         elif isinstance(block.value, StreamValue):
             block_value = ""
             block_type = BlockTypes.STREAM
+        elif isinstance(block.value, list):
+            block_value = ""
+            block_type = BlockTypes.LIST
         else:
             block_value = block.block.get_prep_value(block.value)
             if block_value is None:
                 block_value = ""
             block_type = BlockTypes.OTHER
+
+        # If the block_name is an integer, we are dealing with an item inside a list
+        try:
+            int(block_name)
+            block_name = path[-2] + ":item"
+        except ValueError:
+            pass
 
         block_path = "/".join(path)
 
